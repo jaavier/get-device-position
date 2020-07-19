@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import * as Location from "expo-location";
+import Map from "./components/Map";
 
 export default function App() {
   const [position, setPosition] = useState(null);
@@ -34,16 +35,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       {(position && (
-        <View>
-          <View>
-            <Text>Latitude: {position.latitude}</Text>
-          </View>
-          <View>
-            <Text>Longitude: {position.longitude} </Text>
-          </View>
-          <View>
-            <Button title="Refresh" onPress={getPosition} />
-          </View>
+        <View style={{
+          width: "100%",
+          height: "100%"
+        }}>
+          <Map position={position}/>
         </View>
       )) || (
         <View>
